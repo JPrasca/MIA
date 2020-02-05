@@ -1,5 +1,15 @@
-@extends('layouts.master')
+@extends('layouts.master_sub_id')
 @section('content')
+<script type="text/javascript">
+
+    document.getElementById('home-a').classList.remove('active');
+    document.getElementById('members-li').classList.add('active');
+    document.getElementById('members-li').classList.add('open');
+    document.getElementById('members-div').style.display = 'block';
+    document.getElementById('members-list-li3').classList.add('active');
+    document.getElementById('members-list-a3').classList.add('active');
+ 
+</script>
     <div id="main">
         <div class="row">
             <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>

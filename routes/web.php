@@ -14,11 +14,12 @@
 
 
 Route::get('/', function () {
-    return view('index', [
-        'title' => Config::get('constants.name'), 
-        'name' => Config::get('constants.name'), 
-        'author' => Config::get('constants.author'), 
-        'dataYear' => Config::get('constants.dataYear')
-    ]);
+    return view('index');
 });
-Route::get('person/', 'personController@index');
+Route::get('member', function(){
+    return redirect('member/view');
+});
+Route::get('member/newmember', 'MemberController@new');
+Route::get('member/view', 'MemberController@list');
+Route::get('member/view/{id}', 'MemberController@get');
+Route::get('member/edit/{id}', 'MemberController@edit');

@@ -1,5 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.master_sub_id')
 @section('content')
+<script type="text/javascript">
+        document.getElementById('home-a').classList.remove('active');
+        document.getElementById('members-li').classList.add('active');
+        document.getElementById('members-li').classList.add('open');
+        document.getElementById('members-div').style.display = 'block';
+        document.getElementById('members-list-li4').classList.add('active');
+        document.getElementById('members-list-a4').classList.add('active');
+</script>
     <div id="main">
         <div class="row">
             <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
@@ -8,11 +16,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s10 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Listado de personas</span></h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Datos de membresía</span></h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="{{ url('/person') }}">Inicio</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Personas</a>
+                                <li class="breadcrumb-item"><a href="#">Miembros</a>
                                 </li>
                                 <li class="breadcrumb-item active">Listado
                                 </li>
@@ -30,7 +38,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <p class="caption mb-0">
-                                    Aquí se visualizarán las personas registradas en el sistema
+                                    Vista de un registro
                                 </p>
                             </div>
                         </div>
@@ -41,16 +49,7 @@
             </div>                  
         </div>
     </div>
-    <script type="text/javascript">
-        window.addEventListener('load', function(){
-            document.getElementById('persons-li').classList.add('active');
-            document.getElementById('persons-li').classList.add('open');
-            document.getElementById('persons-list-li').classList.add('active');
-            document.getElementById('persons-list-a').classList.add('active');
-        });
-    
-     
-    </script>
+
 @endsection
 
 

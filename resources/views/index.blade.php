@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+<script type="text/javascript">
+
+    document.getElementById('home-a').classList.add('active');
+    document.getElementById('home-li').classList.add('active');
+</script>
     <div id="main">
         <div class="row">
             <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
@@ -8,13 +13,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s10 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Blank Page</span></h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Bienvenido</span></h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a>
-                                </li>
-                                <li class="breadcrumb-item active">Blank Page
+                            <li class="breadcrumb-item"><a href="{{ url('/')}}">Inicio</a>
                                 </li>
                             </ol>
                         </div>
@@ -30,9 +31,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <p class="caption mb-0">
-                                    Sample blank page for getting start!! Created and designed by Google, Material Design is a design
-                                    language that combines the classic principles of successful design along with innovation and
-                                    technology.
+                                    Inicio de la aplicación
                                 </p>
                             </div>
                         </div>

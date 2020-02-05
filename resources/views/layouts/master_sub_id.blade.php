@@ -10,18 +10,18 @@
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
     <title>{{ config('constants.name') }}</title>
-    <link rel="apple-touch-icon" href="app-assets/images/favicon/apple-touch-icon-152x152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="../../app-assets/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../app-assets/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/vendors/vendors.min.css">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/vertical-modern-menu-template/materialize.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/vertical-modern-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/css/themes/vertical-modern-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/css/themes/vertical-modern-menu-template/style.css">
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/custom/custom.css">
+    <link rel="stylesheet" type="text/css" href="../../app-assets/css/custom/custom.css">
     <!-- END: Custom CSS-->
 </head>
 <!-- END: Head-->
@@ -43,7 +43,7 @@
                         <li>
                             <a style="top: 12%;"class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
                                 <span class="avatar-status avatar-online">
-                                    <img src="app-assets/images/avatar/avatar-7.png" alt="avatar">
+                                    <img src="../../app-assets/images/avatar/avatar-7.png" alt="avatar">
                                     <i style="top: 45%;"></i>
                                 </span>
                             </a>
@@ -76,7 +76,7 @@
     <!-- BEGIN: SideNav-->
     <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
         <div class="brand-sidebar">
-            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ url('/') }}"><img class="hide-on-med-and-down" src="app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><img class="show-on-medium-and-down hide-on-med-and-up" src="app-assets/images/logo/materialize-logo.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">{{ config('constants.name')  }}</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
+            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ url('/') }}"><img class="hide-on-med-and-down" src="../../app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" /><img class="show-on-medium-and-down hide-on-med-and-up" src="../../app-assets/images/logo/materialize-logo.png" alt="materialize logo" /><span class="logo-text hide-on-med-and-down">{{ config('constants.name')  }}</span></a><a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
 
@@ -92,7 +92,7 @@
                         <li id="members-list-li3"><a id="members-list-a3" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Edit">Editar</span></a>
                         </li>
                         </li>
-                        <li id="members-list-li4"><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member View">Ver</span></a>
+                        <li id="members-list-li4"><a id="members-list-a4" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member View">Ver</span></a>
                         </li>
                     </ul>
                 </div>
@@ -155,14 +155,14 @@
 
     <!-- END: Footer-->
     <!-- BEGIN VENDOR JS-->
-    <script src="app-assets/js/vendors.min.js"></script>
+    <script src="../../app-assets/js/vendors.min.js"></script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN THEME  JS-->
-    <script src="app-assets/js/plugins.js"></script>
-    <script src="app-assets/js/search.js"></script>
-    <script src="app-assets/js/custom/custom-script.js"></script>
+    <script src="../../app-assets/js/plugins.js"></script>
+    <script src="../../app-assets/js/search.js"></script>
+    <script src="../../app-assets/js/custom/custom-script.js"></script>
     <!-- END THEME  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <!-- END PAGE LEVEL JS-->
