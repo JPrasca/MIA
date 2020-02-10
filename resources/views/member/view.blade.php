@@ -18,11 +18,11 @@
                         <div class="col s10 m6 l6">
                             <h5 class="breadcrumbs-title mt-0 mb-0"><span>Datos de membresía</span></h5>
                             <ol class="breadcrumbs mb-0">
-                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Inicio</a>
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ config('constants.home') }}</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Miembros</a>
+                                <li class="breadcrumb-item"><a href="#">{{ config('constants.member') }}</a>
                                 </li>
-                                <li class="breadcrumb-item active">Listado
+                                <li class="breadcrumb-item active">{{ config('constants.list') }}
                                 </li>
                             </ol>
                         </div>
@@ -49,7 +49,9 @@
             </div>                  
         </div>
     </div>
-
+    <!-- BEGIN VENDOR JS-->
+    <script src="../../app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
 @endsection
 
 

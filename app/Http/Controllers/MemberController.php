@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Member;
+use Illuminate\Http\Response;
 
 class MemberController extends Controller
 {
@@ -19,7 +21,11 @@ class MemberController extends Controller
 
     function list()
     {
-        return view('member.list');
+        $list = Member::all();
+        $json = \response()->json(['list' => $list]);
+        //var_dump($list[0]->first_name);
+        //die();
+        return view('member.list', ['listado' => $list]);
     }
 
     function get($id)
@@ -31,4 +37,14 @@ class MemberController extends Controller
     {
         return view('member.edit');
     }
+
+    function index()
+    {
+        $list = Member::all();
+        $json = \response()->json(['list' => $list]);
+        //var_dump($list[0]->first_name);
+        //die();
+        return $json;
+    }
+
 }

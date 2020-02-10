@@ -33,13 +33,13 @@
         <div class="navbar navbar-fixed">
             <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
                 <div class="nav-wrapper">
-                    <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+                    {{-- <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
                         <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Buscar en {{ config('constants.name')  }}" data-search="template-list">
                         <ul class="search-list collection display-none"></ul>
-                    </div>
+                    </div> --}}
                     <ul class="navbar-list right">
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
-                        <li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
+                        {{-- <li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li> --}}
                         <li>
                             <a style="top: 12%;"class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
                                 <span class="avatar-status avatar-online">
@@ -80,45 +80,45 @@
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
 
-            <li id="home-li" class="bold"><a  id="home-a" class="waves-effect waves-cyan" href="{{ url('/') }}"><i class="material-icons">home</i><span class="menu-title" data-i18n="Home">Inicio</span></a>
+            <li id="home-li" class="bold"><a  id="home-a" class="waves-effect waves-cyan" href="{{ url('/') }}"><i class="material-icons">home</i><span class="menu-title" data-i18n="Home">{{ config('constants.home') }}</span></a>
             </li>
             <li class="navigation-header"><a class="navigation-header-text">Gestión de personal</a><i class="navigation-header-icon material-icons">more_horiz</i>
             </li>
-            <li id="members-li" class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="People">Miembros</span></a>
+            <li id="members-li" class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="People">{{ config('constants.member') }}</span></a>
                 <div id="members-div" class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li id="members-list-li1"><a id="members-list-a1" href="{{ url('member/view') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member List">Listado</span></a>
-                        <li id="members-list-li2"><a id="members-list-a2" href="{{ url('member/newmember') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Add">Nuevo</span></a>                        </li>
-                        <li id="members-list-li3"><a id="members-list-a3" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Edit">Editar</span></a>
+                        <li id="members-list-li1"><a id="members-list-a1" href="{{ url('member/view') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member List">{{ config('constants.list') }}</span></a>
+                        <li id="members-list-li2"><a id="members-list-a2" href="{{ url('member/newmember') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Add">{{ config('constants.new') }}</span></a>                        </li>
+                        <li id="members-list-li3"><a id="members-list-a3" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Edit">{{ config('constants.edit') }}</span></a>
                         </li>
                         </li>
-                        <li id="members-list-li4"><a id="members-list-a4" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member View">Ver</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="People">Líderes</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders List">Listado</span></a>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Add">Nuevo</span></a>                        </li>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Edit">Editar</span></a>
-                        </li>
-                        </li>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders View">Ver</span></a>
+                        <li id="members-list-li4"><a id="members-list-a4" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member View">{{ config('constants.view') }}</span></a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">group_work</i><span class="menu-title" data-i18n="People">Grupos</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="People">{{ config('constants.leader') }}</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders List">Listado</span></a>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Add">Nuevo</span></a>                        </li>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Edit">Editar</span></a>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders List">{{ config('constants.list') }}</span></a>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Add">{{ config('constants.new') }}</span></a>                        </li>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Edit">{{ config('constants.edit') }}</span></a>
                         </li>
                         </li>
-                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders View">Ver</span></a>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders View">{{ config('constants.view') }}</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">group_work</i><span class="menu-title" data-i18n="People">{{ config('constants.group') }}</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders List">{{ config('constants.list') }}</span></a>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Add">{{ config('constants.new') }}</span></a>                        </li>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders Edit">{{ config('constants.edit') }}</span></a>
+                        </li>
+                        </li>
+                        <li><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Leaders View">{{ config('constants.view') }}</span></a>
                         </li>
                     </ul>
                 </div>
@@ -154,9 +154,7 @@
     </footer>
 
     <!-- END: Footer-->
-    <!-- BEGIN VENDOR JS-->
-    <script src="../../app-assets/js/vendors.min.js"></script>
-    <!-- BEGIN VENDOR JS-->
+
     <!-- BEGIN PAGE VENDOR JS-->
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN THEME  JS-->
