@@ -1,36 +1,43 @@
 
-
+/* 
+Descripción:    Carga inicial de la vista, tabla de miembros registrados
+Autor:          J. Prasca
+Fecha:          2020-02-10
+*/
 $(document).ready(function() {
 
-    fetch(urlBase + '/api/member')
+    /*petición fetch a la API RESTFull */
+    fetch(urlBase + 'api/member')
     .then(function(response) {
           if(response.ok){              
-              return response.json();
-              
+              return response.json();              
           }
     })
     .then(function(myJson) {
-        var listado = myJson.list;
-        let objMember = [];
-        for(let i = 0; i < listado.length; i++){
-            objMember.push({
-                "Identification": listado[i].Identification,
-                "first_name": listado[i].first_name,
-                "last_name": listado[i].last_name,
-                "genre": listado[i].genre,
-                "phone": listado[i].phone,
-                "member_type_id": listado[i].member_type_id,
+        let vList = myJson.list;//obtención del listado json
+        let vMembers = [];// arreglo para tomar la lista
+
+        /* llenado del vector */
+        for(let i = 0; i < vList.length; i++){
+            vMembers.push({
+                "Identification": vList[i].Identification,
+                "first_name": vList[i].first_name,
+                "last_name": vList[i].last_name,
+                "genre": vList[i].genre,
+                "phone": vList[i].phone,
+                "member_type_id": vList[i].member_type_id,
                 "Edit": "Modificar esta monda",
                 "View": "ver esta mierda"
             });            
         }
 
+        /** carga de información a la tabla de datos */
         $('#page-length-option').DataTable( {
-            data: objMember, 
+            data: vMembers, 
             columns: [
                 { data: "Identification", title: "Identificacion" },
-                { data: "first_name", title: "Apellidos" },
-                { data: "last_name", title: "Nombre" },
+                { data: "last_name", title: "Apellidos" },
+                { data: "first_name", title: "Nombres" },
                 { data: "genre", title: "Sexo" },
                 { data: "phone", title: "Teléfono" },
                 { 
@@ -39,21 +46,17 @@ $(document).ready(function() {
                     render:  (data, type, row, meta) => {
                         if(type === 'display'){
                             switch(data){
-                                case 1:
-                                    data = '<span class="chip blue lighten-5"><span class="blue-text">Servidor</span></span>';
-                                    break;
-                                case 2:
-                                    data = '<span class="chip green lighten-5"><span class="green-text">Producción</span></span>';
-                                    break;
-                                default:
-                                    data = '<span class="chip orange lighten-5"><span class="orange-text">Membro común</span></span>';
-                            }
-
-                            
-                        }
-                        
-                        return data;
-                        
+                            case 1:
+                                data = '<span class="chip blue lighten-5"><span class="blue-text">Servidor</span></span>';
+                                break;
+                            case 2:
+                                data = '<span class="chip green lighten-5"><span class="green-text">Producción</span></span>';
+                                break;
+                            default:
+                                data = '<span class="chip orange lighten-5"><span class="orange-text">Membro común</span></span>';
+                            }                            
+                        }                        
+                        return data;                        
                     }
                 },
                 { 
@@ -62,10 +65,8 @@ $(document).ready(function() {
                     render:  (data, type, row, meta) => {
                         if(type === 'display'){
                             data = '<a href=""><i class="material-icons">edit</i></a>';
-                        }
-                        
-                        return data;
-                        
+                        }                        
+                        return data;                        
                     },
                     width: "3%"
                 },
@@ -80,11 +81,7 @@ $(document).ready(function() {
                     },
                     width: "3%"
                 }             
-            ],
-
-        } );  
-
-        
+            ]
+        } );          
     });
-
 } );

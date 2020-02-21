@@ -9,5 +9,5 @@ class Member extends Model
     //
     protected $table = 'members';
 
-
+    
 }

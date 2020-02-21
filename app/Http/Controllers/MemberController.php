@@ -21,11 +21,7 @@ class MemberController extends Controller
 
     function list()
     {
-        $list = Member::all();
-        $json = \response()->json(['list' => $list]);
-        //var_dump($list[0]->first_name);
-        //die();
-        return view('member.list', ['listado' => $list]);
+        return view('member.list');
     }
 
     function get($id)
@@ -41,8 +37,8 @@ class MemberController extends Controller
     function index()
     {
         $list = Member::all();
-        $json = \response()->json(['list' => $list]);
-        //var_dump($list[0]->first_name);
+        $json = response()->json(['list' => $list]);
+        //var_dump($json);
         //die();
         return $json;
     }
