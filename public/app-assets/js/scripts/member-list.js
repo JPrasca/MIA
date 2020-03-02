@@ -127,8 +127,7 @@ $(document).ready(function() {
             scrollY: '50%',
             scrollCollapse: true            
         } );
-        $('#progress').hide();
-        //$('#progress').hide();         
        
+        document.getElementById('progress').style.visibility = 'hidden';       
     });
 } );
