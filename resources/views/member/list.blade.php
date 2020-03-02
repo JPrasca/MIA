@@ -15,10 +15,7 @@
     document.getElementById('members-li').classList.add('open');
     document.getElementById('members-div').style.display = 'block';
     document.getElementById('members-list-li1').classList.add('active');
-    document.getElementById('members-list-a1').classList.add('active');
-
- 
-    
+    document.getElementById('members-list-a1').classList.add('active');    
  
 </script>
 
@@ -57,8 +54,11 @@
                                     <h4 class="card-title">{{config('constants.member_title_list')}}</h4>
                                         <div class="row">
                                             <div class="col s12">
-                                                <table id="page-length-option" class="display">
+                                                <table id="page-length-option" class="display responsive nowrap"  style="width: 100%;">
                                                 </table>
+                                            </div>
+                                            <div id="progress" class="progress">
+                                                <div class="indeterminate"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -71,8 +71,11 @@
                 <div class="content-overlay"></div>
             </div>                  
         </div>
+        
     </div>
-
+    <div style="bottom: 50px; right: 19px;" class="fixed-action-btn direction-top active">
+        <a class="btn-floating btn-large" href="{{ url('member/newmember') }}"><i class="material-icons">add</i></a>
+    </div>
 @endsection
     <!-- BEGIN VENDOR SUB JS-->
     <script src="../app-assets/js/vendors.min.js"></script>

@@ -20,68 +20,114 @@ $(document).ready(function() {
         /* llenado del vector */
         for(let i = 0; i < vList.length; i++){
             vMembers.push({
-                "Identification": vList[i].Identification,
+                "Id": vList[i].Id,
+                "Identification": vList[i].identification,
                 "first_name": vList[i].first_name,
                 "last_name": vList[i].last_name,
                 "genre": vList[i].genre,
                 "phone": vList[i].phone,
                 "member_type_id": vList[i].member_type_id,
-                "Edit": "Modificar esta monda",
-                "View": "ver esta mierda"
+                "view": "Ver",
+                "edit": "Editar"
             });            
         }
 
         /** carga de información a la tabla de datos */
         $('#page-length-option').DataTable( {
-            data: vMembers, 
+            data: vMembers,
+            columnDefs: [
+                { width: "20%", targets: [5 ,6] },
+                { width: "30%", targets: [2, 3] },
+                { width: '2%', targets: [4] },
+                { width: '1%', targets: [7, 8]},
+                { visible: false, targets: [0, 1]}
+            ],
             columns: [
-                { data: "Identification", title: "Identificacion" },
-                { data: "last_name", title: "Apellidos" },
-                { data: "first_name", title: "Nombres" },
-                { data: "genre", title: "Sexo" },
-                { data: "phone", title: "Teléfono" },
+                { 
+                    data: "Id", 
+                    title: "Id",
+                    
+                },
+                { 
+                    data: "Identification", 
+                    title: "Identificacion",
+                    
+                },
+                { 
+                    data: "last_name", 
+                    title: "Apellidos"
+                },
+                { 
+                    data: "first_name", 
+                    title: "Nombres"
+                },
+                { 
+                    data: "genre", 
+                    title: "Sexo"
+                },
+                { 
+                    data: "phone", 
+                    title: "Teléfono"
+                },
                 { 
                     data: "member_type_id", 
                     title: "Tipo",
                     render:  (data, type, row, meta) => {
+                        let vData = data.split('|');
+                        vData.splice(vData.length - 1, 1);
+                        let sSeparator = '';
+                        data = '';
                         if(type === 'display'){
-                            switch(data){
-                            case 1:
-                                data = '<span class="chip blue lighten-5"><span class="blue-text">Servidor</span></span>';
-                                break;
-                            case 2:
-                                data = '<span class="chip green lighten-5"><span class="green-text">Producción</span></span>';
-                                break;
-                            default:
-                                data = '<span class="chip orange lighten-5"><span class="orange-text">Membro común</span></span>';
-                            }                            
+                            for(let i = 0; i < vData.length; i++){
+                                sSeparator = ((i + 1)%2 == 0)? '<br>': '';  
+                                switch(vData[i]){
+                                case "1":
+                                    data += '<span style="font-size:8px;" class="chip blue lighten-4"><span class="blue-text">'+ vMemberType[0].name +'</span></span>'+sSeparator;
+                                   break;
+                                case "2":
+                                    data += '<span style="font-size:8px;" class="chip green lighten-4"><span class="green-text">'+ vMemberType[1].name +'</span></span>'+sSeparator;
+                                    break;
+                                case "3":
+                                    data += '<span style="font-size:8px;" class="chip red lighten-4"><span class="red-text">'+ vMemberType[2].name +'</span></span>'+sSeparator;
+                                    break;
+                                case "4":
+                                    data += '<span style="font-size:8px;" class="chip yellow lighten-4"><span class="orange-text">'+ vMemberType[3].name +'</span></span>'+sSeparator;
+                                    break;                                  
+                                case '5':
+                                    data += '<span style="font-size:8px;"class="chip orange lighten-4"><span class="orange-text">'+ vMemberType[4].name +'</span></span>'+sSeparator;
+                                    break;
+                                } 
+                                
+                            }                         
                         }                        
                         return data;                        
                     }
                 },
                 { 
-                    data: "Edit", 
-                    title: "Editar",
-                    render:  (data, type, row, meta) => {
-                        if(type === 'display'){
-                            data = '<a href=""><i class="material-icons">edit</i></a>';
-                        }                        
-                        return data;                        
-                    },
-                    width: "3%"
-                },
-                { 
-                    data: "View", 
+                    data: "view", 
                     title: "Ver", 
                     render: function(data, type, row, meta){
                         if(type === 'display'){
-                            data = '<a href=""><i class="material-icons">remove_red_eye</i></a>';
+                            data = '<a href="' + urlBase + 'member/view/' + row.Id + '"><i class="material-icons">remove_red_eye</i></a>';
                         }                        
                         return data;
-                    },
-                    width: "3%"
-                }             
-            ]
-        } );          
+                    }
+                },
+                { 
+                    data: "edit", 
+                    title: "Editar", 
+                    render: function(data, type, row, meta){
+                        if(type === 'display'){
+                            data = '<a href="' + urlBase + 'member/edit/' + row.Id + '"><i class="material-icons">edit</i></a>';
+                        }                        
+                        return data;
+                    }
+                }              
+            ],
+            scrollY: '50%',
+            scrollCollapse: true            
+        } );
+        $('#progress').hide();
+        //$('#progress').hide();         
     });
 } );

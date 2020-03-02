@@ -21,7 +21,19 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../app-assets/css/custom/custom.css">
     <script>
-        const urlBase = "{{ config('constants.url_base')}}";
+        const   urlBase = "{{ config('constants.url_base')}}";
+        let     vMemberType = Array();
+        
+        /* llenado de tipos de miembro */
+        fetch(urlBase + 'api/memberType')
+        .then(function(response) {
+            if(response.ok){              
+                return response.json();              
+            }
+        }).then(function(jsonMemberTypes){
+            vMemberType = jsonMemberTypes.list;
+        });
+
     </script>
     <!-- END: Custom CSS-->
 
