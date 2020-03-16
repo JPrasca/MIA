@@ -63,7 +63,7 @@
                                 </span>
                             </a>
                         </li>
-                    </ul>
+                     </ul>
 
                     <!-- profile-dropdown-->
                     <ul class="dropdown-content" id="profile-dropdown">

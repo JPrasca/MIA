@@ -79,23 +79,9 @@ $(document).ready(function() {
                         data = '';
                         if(type === 'display'){
                             for(let i = 0; i < vData.length; i++){
-                                sSeparator = ((i + 1)%2 == 0)? '<br>': '';  
-                                switch(vData[i]){
-                                case "1":
-                                    data += '<span style="font-size:8px;" class="chip blue lighten-4"><span class="blue-text">'+ vMemberType[0].name +'</span></span>'+sSeparator;
-                                   break;
-                                case "2":
-                                    data += '<span style="font-size:8px;" class="chip green lighten-4"><span class="green-text">'+ vMemberType[1].name +'</span></span>'+sSeparator;
-                                    break;
-                                case "3":
-                                    data += '<span style="font-size:8px;" class="chip red lighten-4"><span class="red-text">'+ vMemberType[2].name +'</span></span>'+sSeparator;
-                                    break;
-                                case "4":
-                                    data += '<span style="font-size:8px;" class="chip yellow lighten-4"><span class="orange-text">'+ vMemberType[3].name +'</span></span>'+sSeparator;
-                                    break;                                  
-                                case '5':
-                                    data += '<span style="font-size:8px;"class="chip orange lighten-4"><span class="orange-text">'+ vMemberType[4].name +'</span></span>'+sSeparator;
-                                    break;
+                                sSeparator = ((i + 1)%2 == 0)? '<br>': ''; 
+                                if(!isNaN(vData[i])){ 
+                                    data += '<span style="font-size:8px;" class="chip '+ vMemberType[vData[i]].color_template2 +' lighten-4"><span class="'+ vMemberType[vData[i]].color_template +'-text">'+ vMemberType[vData[i]].name +'</span></span>'+sSeparator;
                                 } 
                                 
                             }                         

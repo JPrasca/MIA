@@ -74,7 +74,7 @@
         
     </div>
     <div style="bottom: 50px; right: 19px;" class="fixed-action-btn direction-top active">
-        <a class="btn-floating btn-large" href="{{ url('member/newmember') }}"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" href="{{ url('member/newmember') }}"><i class="material-icons">add</i></a>
     </div>
 @endsection
     <!-- BEGIN VENDOR SUB JS-->

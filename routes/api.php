@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('member', 'MemberController');
 
 Route::get('memberType', 'MemberTypeController@index');
+
+Route::get('occupationType', 'OccupationTypeController@index');

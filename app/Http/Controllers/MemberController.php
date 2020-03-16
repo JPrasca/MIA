@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Member;
+use App\Http\Controllers\OccupationTypeController;
 use Illuminate\Http\Response;
 
 class MemberController extends Controller
@@ -29,7 +30,9 @@ class MemberController extends Controller
      */
     function new()
     {
-        return view('member.new');
+        $objOcupation = new OccupationTypeController();
+        $vOccupationList = $objOcupation->GetOccupationsAll();
+        return view('member.new', ['vOccupationlist' => $vOccupationList]);
     }
 
     
