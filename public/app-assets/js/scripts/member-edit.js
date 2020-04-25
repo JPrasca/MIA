@@ -6,7 +6,6 @@ Fecha:          2020-03-16
 $(document).ready(function(){
 
     try{
-
         /** componente para escoger fechas */
         $('.datepicker').datepicker({
             firstDay: true, 
@@ -55,9 +54,18 @@ $(document).ready(function(){
                     {  
                     title: "Sel", 
                         /** se inserta un check con nombre dinámico para poder reconocerlo luego */
-                    render: function(data, type, row, meta) { 
+                    render: function(data, type, row, meta) {
+                        let bIsChecked = false;
+                        for(let i= 0; i < vMemberTypeSelectList.length; i++ ){
+                            if(row.Id == vMemberTypeSelectList[i]){
+                                bIsChecked = true;
+                                break;
+                            }
+                        }
+
+
                         return `<label>
-                                    <input type="checkbox" name="selectType" value="` + row.Id + `" id="sel_` + row.Id + `" />
+                                    <input type="checkbox" name="selectType" value="` + row.Id + `" id="sel_` + row.Id + `" ` + ((bIsChecked)? `checked="checked"` :``) + `/>
                                     <span></span>
                                     </label>`;   
                         }              
@@ -157,6 +165,7 @@ const SaveMemberComplete = () => {
     let nYear = dtAuxDate.getFullYear();
 
     let jsonMember = {
+        Id: iMemberId,
         Identification: document.querySelector("#idNumber").value,
         firstName: document.querySelector("#firstName").value,
         lastName: document.querySelector("#lastName").value,
@@ -170,8 +179,8 @@ const SaveMemberComplete = () => {
         registrationDate: nYear + "-" + nMonth + "-" + nDay
     };
 
-    fetch(urlBase + "api/member/insertMember?json=" + JSON.stringify(jsonMember), {
-        method: 'POST',
+    fetch(urlBase + "api/member/updateMember?json=" + JSON.stringify(jsonMember), {
+        method: 'PUT',
         headers:{
             'Content-Type': 'application/json'
         }
@@ -190,7 +199,7 @@ const SaveMemberComplete = () => {
                 icon: "success",
                 buttons: {
                     stayHere: {
-                        text: "Registrar otro",
+                        text: "Continuar aquí",
                         value: "stayHere"
                     },
                     goToList: { 
@@ -228,3 +237,7 @@ const SaveMemberComplete = () => {
         }); 
     });
 }
+
+      
+
+

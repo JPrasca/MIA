@@ -51,35 +51,39 @@
 
                     <div class="row">
                         <div class="col s12">
-                            <div class="card">
+                            <div class="card animate fadeUp">
                                 <div class="card-content pb-0">
                                     <div class="card-header mb-2">
                                         <h4 class="card-title">Datos de la persona</h4>
                                     </div>
 
-                                    <form method="GET" action="?"><ul class="stepper horizontal" id="horizStepper">
+                                    <form method="POST" action="{{ config('constants.url_base') }}api/member/insert"><ul class="stepper horizontal" id="horizStepper">
                                         <li class="step active">
                                             <div class="step-title waves-effect">Datos personales</div>
                                             <div class="step-content">
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
+                                                        <i class="material-icons prefix">perm_identity</i>
                                                         <label for="idNumber" class="active">Identificación: <span class="red-text">*</span></label>
-                                                        <input type="number" class="validate valid" name="idNumber" id="idNumber" required="">
+                                                        <input type="number" class="validate valid" name="idNumber" id="idNumber" required="" data-length="15">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
+                                                        <i class="material-icons prefix">view_agenda</i>
                                                         <label for="firstName" class="active">Nombres: <span class="red-text">*</span></label>
-                                                        <input type="text" id="firstName" name="firstName" class="validate valid" required="">
+                                                        <input type="text" id="firstName" name="firstName" class="validate valid" required="" data-length="80">
                                                     </div>
                                                     <div class="input-field col m6 s12">
+                                                        <i class="material-icons prefix">view_agenda</i>
                                                         <label for="lastName" class="active">Apellidos: <span class="red-text">*</span></label>
-                                                        <input type="text" id="lastName" class="validate valid" name="lastName" required="">
+                                                        <input type="text" id="lastName" class="validate valid" name="lastName" required="" data-length="80">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
                                                         <div class="select-wrapper">
+                                                            <i class="material-icons prefix">face</i>
                                                             <select id="genre" name="genre" required="" class="validate valid">
                                                                 <option value="" disabled selected>Escoja el género</option>
                                                                 <option value="M">Masculino</option>
@@ -87,33 +91,35 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="input-field col m6 s12">
+                                                    <div class="input-field col m6 s12">                                                        
+                                                        <i class="material-icons prefix">date_range</i>
                                                         <label for="birthDate" class="active">Fecha de nacimiento: <span class="red-text">*</span></label>
                                                         <input id="birthDate" name="birthDate" type="text" class="datepicker validate valid" required="">
                                                     </div>
                                                 </div>
-                                                <div class="row"></div>
-                                                <div class="step-actions">
-                                                    <div class="row">
-                                                        <div class="col m4 s12 mb-3">
-                                                            <button class="red btn btn-reset waves-effect waves-light" type="reset">
-                                                                <i class="material-icons left">clear</i>Limpiar
-                                                            </button>
-                                                        </div>
-                                                        <div class="col m4 s12 mb-3">
-                                                            <button class="btn btn-light previous-step waves-effect waves-light" disabled="">
-                                                                <i class="material-icons left">arrow_back</i>
-                                                                Atrás
-                                                            </button>
-                                                        </div>
-                                                        <div class="col m4 s12 mb-3">
-                                                            <button class="waves-effect waves dark btn btn-primary next-step waves-effect waves-light" type="submit">
-                                                                Siguiente
-                                                                <i class="material-icons right">arrow_forward</i>
-                                                            </button>
+                                                <div class="row">
+                                                    <div class="step-actions">
+                                                        <div class="row">
+                                                            <div class="col m4 s12 mb-3">
+                                                                <button class="red btn btn-reset waves-effect waves-light" type="reset">
+                                                                    <i class="material-icons left">clear</i>Limpiar
+                                                                </button>
+                                                            </div>
+                                                            <div class="col m4 s12 mb-3">
+                                                                <button class="btn btn-light previous-step waves-effect waves-light" disabled="">
+                                                                    <i class="material-icons left">arrow_back</i>
+                                                                    Atrás
+                                                                </button>
+                                                            </div>
+                                                            <div class="col m4 s12 mb-3">
+                                                                <button id="btnNext1" class="waves-effect waves dark btn btn-primary next-step waves-effect waves-light" type="submit">
+                                                                    Siguiente
+                                                                    <i class="material-icons right">arrow_forward</i>
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>        
                                             </div>
                                         </li>
                                         <li class="step">
@@ -121,18 +127,21 @@
                                             <div class="step-content">
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
+                                                        <i class="material-icons prefix">room</i>
                                                         <label for="adress">Dirección: <span class="red-text"></span></label>
-                                                        <input type="text" class="validate" id="adress" name="adress">
+                                                        <input type="text" class="validate" id="adress" name="adress" maxlength="100">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
-                                                        <label for="Email1" class="active">Email: <span class="red-text">*</span></label>
-                                                        <input type="email" class="validate valid" name="Email" id="Email1" required="">
+                                                        <i class="material-icons prefix">email</i>
+                                                        <label for="email" class="active">Email: <span class="red-text">*</span></label>
+                                                        <input type="email" class="validate valid" name="email" id="email" required="" data-length="80">
                                                     </div>
                                                     <div class="input-field col m6 s12">
-                                                        <label for="contactNum1" class="active">Teléfono: <span class="red-text">*</span></label>
-                                                        <input type="number" class="validate valid" name="contactNum" id="contactNum1" required="">
+                                                        <i class="material-icons prefix">phone</i>
+                                                        <label for="contactNum" class="active">Teléfono: <span class="red-text">*</span></label>
+                                                        <input type="number" class="validate valid" name="contactNum" id="contactNum" required="" data-length="12">
                                                     </div>
                                                 </div>
                                                 <div class="step-actions">
@@ -164,16 +173,17 @@
                                                 <div class="row">
                                                     <div class="input-field col m6 s12">
                                                         <div>
+                                                            <i class="material-icons prefix">recent_actors</i>
                                                             <select id="occupation" name="occupation" required="" class="validate valid">
-                                                                <option value="" disabled selected>Seleccione una opción</option>
+                                                                <option value="" disabled selected>Escoja una ocupación</option>
                                                                
                                                                 <!-- llenado del combo de tipos de ocupación con la lista
                                                                 retornada del controlador-->
                                                                 @foreach ($vOccupationlist as $occupationitem)                                                                
                                                                     <option value="{{ $occupationitem->Id }}" >{{ $occupationitem->name }}</option>
                                                                 @endforeach
-                                                            </select>
-                                                            <label for="occupation">Ocupación</label>
+                                                            </select>                                                           
+                                                            {{-- <label for="occupation">Ocupación</label> --}}
                                                         </div>    
                                                     </div> 
                                                     <div class="input-field col m6 s12">      
@@ -191,14 +201,20 @@
                                                 </div>
                                                 <div class="step-actions">
                                                     <div class="row">
-                                                        <div class="col m6 s12 mb-1">
+                                                        <div class="col m4 s12 mb-3">
                                                             <button class="red btn mr-1 btn-reset waves-effect waves-light" type="reset">
                                                                 <i class="material-icons">clear</i>
-                                                                Reset
+                                                                Limpiar
                                                             </button>                                                            
                                                         </div>
-                                                        <div class="col m6 s12 mb-1">
-                                                            <button class="waves-effect btn btn-primary waves-light" type="submit">Submit</button>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="btn btn-light previous-step waves-effect waves-light">
+                                                                <i class="material-icons left">arrow_back</i>
+                                                                Atrás
+                                                            </button>
+                                                        </div>
+                                                        <div class="col m4 s12 mb-3">
+                                                            <button class="waves-effect btn btn-primary waves-light" type="button" onclick="SaveMemberConfirm()">Guardar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -214,7 +230,9 @@
             <div class="content-overlay"></div>
         </div>
     </div>
-
+    <div style="bottom: 50px; right: 19px;" class="fixed-action-btn direction-top active">
+        <a class="btn-floating btn-large waves-effect waves-light" href="{{ url('member') }}"><i class="material-icons">list</i></a>
+    </div>
 <!-- BEGIN VENDOR SUB JS-->
 <script src="../app-assets/js/vendors.min.js"></script>
 

@@ -17,8 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('member', 'MemberController');
+Route::get('member', 'MemberController@index');
+Route::post('member/insertMember', 'MemberController@store');
+Route::put('member/updateMember', 'MemberController@update');
 
 Route::get('memberType', 'MemberTypeController@index');
 
 Route::get('occupationType', 'OccupationTypeController@index');
+
+

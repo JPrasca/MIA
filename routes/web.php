@@ -23,3 +23,5 @@ Route::get('member/newmember', 'MemberController@new');
 Route::get('member/view', 'MemberController@list');
 Route::get('member/view/{id}', 'MemberController@get');
 Route::get('member/edit/{id}', 'MemberController@edit');
+
+

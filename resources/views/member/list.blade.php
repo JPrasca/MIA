@@ -43,13 +43,13 @@
                     </div>
                 </div>
             </div>
-        <div class="col s12">
+            <div class="col s12">
                 <div class="container">
                     <div class="section section-data-tables">
                     <!-- Page Length Options -->
                         <div class="row">
                             <div class="col s12">
-                                <div class="card">
+                                <div class="card animate fadeUp">
                                     <div class="card-content">
                                     <h4 class="card-title">{{config('constants.member_title_list')}}</h4>
                                         <div class="row">
@@ -57,7 +57,8 @@
                                                 <table id="page-length-option" class="display responsive nowrap"  style="width: 100%;">
                                                 </table>
                                             </div>
-                                            <div id="progress" class="progress">
+                                            <span id="progress-text"><p class="card-title">Obteniendo información...</p></span>
+                                            <div id="progress" class="progress">                                                
                                                 <div class="indeterminate"></div>
                                             </div>
                                         </div>
@@ -65,13 +66,11 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="content-overlay"></div>
             </div>                  
-        </div>
-        
+        </div>        
     </div>
     <div style="bottom: 50px; right: 19px;" class="fixed-action-btn direction-top active">
         <a class="btn-floating btn-large waves-effect waves-light" href="{{ url('member/newmember') }}"><i class="material-icons">add</i></a>

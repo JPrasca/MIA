@@ -7,13 +7,17 @@ use App\MemberType;
 
 class MemberTypeController extends Controller
 {
-    //
+   /** 
+     * Autor:           Jesús Prasca
+     * Fecha:           2020-03-01
+     * Descripción:     Método para obtener todos los tipos/ministerios
+     * Modificación:    
+     */
     function index()
     {
         $list = MemberType::all();
         $json = response()->json(['list' => $list]);
-        //var_dump($json);
-        //die();
+
         return $json;
     }
 }

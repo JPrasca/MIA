@@ -20,6 +20,7 @@
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../app-assets/css/custom/custom.css">
+
     <script>
         const   urlBase = "{{ config('constants.url_base')}}";
         let     vMemberType = Array();
@@ -33,7 +34,7 @@
         }).then(function(jsonMemberTypes){
             vMemberType = jsonMemberTypes.list;
         });
-
+        
     </script>
     <!-- END: Custom CSS-->
 
@@ -56,10 +57,10 @@
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
                         {{-- <li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li> --}}
                         <li>
-                            <a style="top: 18.156;"class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+                            <a id="avatar-a" style="padding-bottom: 18px; padding-top:18px; height: 65px" class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
                                 <span class="avatar-status avatar-online">
                                     <img src="../app-assets/images/avatar/avatar-7.png" alt="avatar">
-                                    <i style="top: 65%;"></i>
+                                    <i id="avatar-i" style="top: 65%;"></i>
                                 </span>
                             </a>
                         </li>
@@ -102,9 +103,9 @@
             <li id="members-li" class="bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="People">Miembros</span></a>
                 <div id="members-div" class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li id="members-list-li1"><a id="members-list-a1" href="{{ url('member/view') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member List">Listado</span></a>
-                        <li id="members-list-li2"><a id="members-list-a2" href="{{ url('member/newmember') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Add">Nuevo</span></a>                        </li>
-                        <li id="members-list-li3"><a id="members-list-a3" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member Edit">Editar</span></a>
+                        <li id="members-list-li1"><a id="members-list-a1" href="{{ url('member/view') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="List">Listado</span></a>
+                        <li id="members-list-li2"><a id="members-list-a2" href="{{ url('member/newmember') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Add">Nuevo</span></a>                        </li>
+                        <li id="members-list-li3"><a id="members-list-a3" href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Edit">Editar</span></a>
                         </li>
                         </li>
                         <li id="members-list-li4"><a href="#"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Member View">Ver</span></a>
@@ -174,6 +175,7 @@
     <script src="../app-assets/js/plugins.js"></script>
     <script src="../app-assets/js/search.js"></script>
     <script src="../app-assets/js/custom/custom-script.js"></script>
+    <script src="../app-assets/vendors/sweetalert/sweetalert.min.js"></script>
     <!-- END THEME  JS-->
 </body>
 

@@ -6,23 +6,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
-    <meta name="author" content="ThemeSelect">
+    <meta name="description" content="">
+    <meta name="keywords" content="MIA CNX">
+    <meta name="author" content="JPrasca">
     <title>{{ config('constants.name') }}</title>
     <link rel="apple-touch-icon" href="../../app-assets/images/favicon/apple-touch-icon-152x152.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../app-assets/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="../../app-assets/vendors/vendors.min.css">
-    <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="../../app-assets/css/themes/vertical-modern-menu-template/materialize.css">
     <link rel="stylesheet" type="text/css" href="../../app-assets/css/themes/vertical-modern-menu-template/style.css">
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="../../app-assets/css/custom/custom.css">
+
+    <script>
+        const   urlBase = "{{ config('constants.url_base')}}";
+        let     vMemberType = Array();
+        
+        /* llenado de tipos de miembro */
+        fetch(urlBase + 'api/memberType')
+        .then(function(response) {
+            if(response.ok){              
+                return response.json();              
+            }
+        }).then(function(jsonMemberTypes){
+            vMemberType = jsonMemberTypes.list;
+        });
+
+    </script>
     <!-- END: Custom CSS-->
+
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> --}}
 </head>
 <!-- END: Head-->
 
@@ -41,10 +57,10 @@
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
                         {{-- <li class="hide-on-large-only search-input-wrapper"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li> --}}
                         <li>
-                            <a style="top: 12%;"class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+                            <a id="avatar-a" style="padding-bottom: 18px; padding-top:18px; height: 65px" class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
                                 <span class="avatar-status avatar-online">
                                     <img src="../../app-assets/images/avatar/avatar-7.png" alt="avatar">
-                                    <i style="top: 45%;"></i>
+                                    <i id="avatar-i" style="top: 65%;"></i>
                                 </span>
                             </a>
                         </li>
@@ -155,15 +171,12 @@
 
     <!-- END: Footer-->
 
-    <!-- BEGIN PAGE VENDOR JS-->
-    <!-- END PAGE VENDOR JS-->
     <!-- BEGIN THEME  JS-->
     <script src="../../app-assets/js/plugins.js"></script>
     <script src="../../app-assets/js/search.js"></script>
     <script src="../../app-assets/js/custom/custom-script.js"></script>
+    <script src="../../app-assets/vendors/sweetalert/sweetalert.min.js"></script>
     <!-- END THEME  JS-->
-    <!-- BEGIN PAGE LEVEL JS-->
-    <!-- END PAGE LEVEL JS-->
     
 </body>
 
