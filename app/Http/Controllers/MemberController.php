@@ -18,9 +18,14 @@ class MemberController extends Controller
      * Descripción:     Método para obtener la vista inicial para miembros/personas
      * Modificación:    
      */
-    function home()
-    {        
-        return view('member.list');
+    function home(Request $request)
+    {      
+        if($request->cookie('token') == null || $request->cookie('token') == '')
+        {
+            return \redirect('login');
+        }
+
+        return view('member.list', ['sLevelDir' => config('constants.level2')]);
     }
 
     
@@ -31,11 +36,24 @@ class MemberController extends Controller
      *                  (se carga la lista de tipos de ocupación)
      * Modificación:    
      */
-    function new()
+    function new(Request $request)
     {
+        if($request->cookie('token') == null || $request->cookie('token') == '')
+        {
+            return \redirect('login');
+        }
+
         $objOcupation = new OccupationTypeController();
         $vOccupationList = $objOcupation->GetOccupationsAll();
-        return view('member.new', ['vOccupationlist' => $vOccupationList]);
+        return view('member.new', [
+            'sLevelDir' => config('constants.level2'), 
+            'vOccupationlist' => $vOccupationList, 
+            'objUser' => [
+                'name' => $request->cookie('username'), 
+                'token' => $request->cookie('token'), 
+                'rol_id' => $request->cookie('rol_id')
+            ]
+        ]);
     }
 
     
@@ -45,11 +63,23 @@ class MemberController extends Controller
      * Descripción:     Método para obtener la vista de todos los registros de la tabla de miembros
      * Modificación:    
      */
-    function list()
+    function list(Request $request)
     {
+        if($request->cookie('token') == null || $request->cookie('token') == '')
+        {
+            return \redirect('login');
+        }
+
         try {
             
-            return view('member.list');
+            return view('member.list', [
+                'sLevelDir' => config('constants.level2'), 
+                'objUser' => [
+                    'name' => $request->cookie('username'), 
+                    'token' => $request->cookie('token'),
+                    'rol_id' => $request->cookie('rol_id')
+                ]
+            ]);
         } catch (\Throwable $th) {
             return \abort(404);
         }
@@ -65,8 +95,13 @@ class MemberController extends Controller
      * 2020-03-28 JPrasca: Se modifica consulta a retornar y se añade vector con los tipos de membresía correspondientes a
      *                      la persona.
      */
-    function get($id)
+    function get($id, Request $request)
     {
+
+        if($request->cookie('token') == null || $request->cookie('token') == '')
+        {
+            return \redirect('login');
+        }
 
         try {
 
@@ -97,7 +132,17 @@ class MemberController extends Controller
                     }
                 }
                     
-                return view('member.view', ['objMember' => $objMemberAux[0], 'vMemberTypeSelect' => $vMemberTypeIdList]);
+                return view('member.view', [
+                    'sLevelDir' => config('constants.level3'),
+                    'objMember' => $objMemberAux[0], 
+                    'vMemberTypeSelect' => $vMemberTypeIdList, 
+                    'sViewMode' => 'view',
+                    'objUser' => [
+                        'name' => $request->cookie('username'), 
+                        'token' => $request->cookie('token'),
+                        'rol_id' => $request->cookie('rol_id')
+                    ]
+                ]);
             }else
             {
                 return redirect('member/view');
@@ -117,8 +162,13 @@ class MemberController extends Controller
      * Descripción:     Método para obtener la vista de actualización de datos de un miembro
      * Modificación:    
      */
-    function edit($id)
+    function edit($id, Request $request)
     {
+        if($request->cookie('token') == null || $request->cookie('token') == '')
+        {
+            return \redirect('login');
+        }
+
         try
         {
             $objMember = new Member();
@@ -134,7 +184,18 @@ class MemberController extends Controller
                 return redirect('member/view');
             }
   
-            return view('member.edit', ['objMember' => $objMemberAux, 'vOccupationlist' => $vOccupationList, 'vMemberTypeSelect' => $vMemberTypeIdList]);
+            return view('member.edit', [
+                'sLevelDir' => config('constants.level3'), 
+                'objMember' => $objMemberAux, 
+                'vOccupationlist' => $vOccupationList, 
+                'vMemberTypeSelect' => $vMemberTypeIdList, 
+                'sViewMode' => 'edit',
+                'objUser' => [
+                    'name' => $request->cookie('username'), 
+                    'token' => $request->cookie('token'),
+                    'rol_id' => $request->cookie('rol_id')    
+                ]
+            ]);
         }
         catch(Exception $th){
             return abort(404);
@@ -159,7 +220,7 @@ class MemberController extends Controller
             $data = array(
                 'code' => 404,
                 'status' => 'error',
-                'message' => 'Ha ocurrido un error en MemberController@index' + $th->getMessage()
+                'message' => 'Ha ocurrido un error en MemberController@index'.$th->getMessage()
             );
             return response()->json($data, $data['code']);
         }
@@ -262,7 +323,7 @@ class MemberController extends Controller
             $data = array(
                 'code' => 200,
                 'status' => 'error',
-                'message' => 'Ha ocurrido un error en MemberController@store' + $th->getMessage()
+                'message' => 'Ha ocurrido un error en MemberController@store'.$th->getMessage()
             );
             return response()->json($data, $data['code']);
         }
@@ -374,7 +435,7 @@ class MemberController extends Controller
             $data = array(
                 'code' => 200,
                 'status' => 'error',
-                'message' => 'Ha ocurrido un error en MemberController@update' + $th->getMessage()
+                'message' => 'Ha ocurrido un error en MemberController@update: '.$th->getMessage()
             );
             return response()->json($data, $data['code']);
         }

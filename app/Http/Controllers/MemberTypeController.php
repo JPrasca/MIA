@@ -20,4 +20,20 @@ class MemberTypeController extends Controller
 
         return $json;
     }
+
+    /** 
+     * Autor:           Jesús Prasca
+     * Fecha:           2020-05-9
+     * Descripción:     Método para obtener la vista inicial del maestro de áreas/ministerios
+     * Modificación:    
+     */
+    function list()
+    {
+        try {
+            
+            return view('param/member_type_list', ['sLevelDir' => config('constants.level2')]);
+        } catch (\Throwable $th) {
+            return \abort(404);
+        }
+    }
 }

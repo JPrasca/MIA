@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="../app-assets/vendors/data-tables/css/select.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="../app-assets/vendors/data-tables/css/jquery.dataTables.css">
 <!-- END: VENDOR SUB CSS-->
-@extends('layouts.master_sub')
+@extends('layouts.master')
 @section('content')
 <script type="text/javascript">
 
@@ -171,6 +171,18 @@
                                             <div class="step-title waves-effect">Otro</div>
                                             <div class="step-content">
                                                 <div class="row">
+                                                    <div class="input-field col m6 s12">      
+                                                        <label class="active">Ministerio (no es obligatorio)</label>                                 
+                                                        <div class="section section-data-tables">
+                                                        <!-- Page Length Options -->
+                                                            <div class="row">
+                                                                <div class="col s12">
+                                                                    <table id="page-length-option" class="display responsive">
+                                                                    </table>
+                                                                </div>
+                                                            </div>                                            
+                                                        </div>                                                       
+                                                    </div>
                                                     <div class="input-field col m6 s12">
                                                         <div>
                                                             <i class="material-icons prefix">recent_actors</i>
@@ -186,18 +198,7 @@
                                                             {{-- <label for="occupation">Ocupación</label> --}}
                                                         </div>    
                                                     </div> 
-                                                    <div class="input-field col m6 s12">      
-                                                        <label class="active">Ministerio:</label>                                 
-                                                        <div class="section section-data-tables">
-                                                        <!-- Page Length Options -->
-                                                            <div class="row">
-                                                                <div class="col s12">
-                                                                    <table id="page-length-option" class="display responsive"  style="width: 60%; height: 30%">
-                                                                    </table>
-                                                                </div>
-                                                            </div>                                            
-                                                        </div>                                                       
-                                                    </div>                                                                             
+                                                                             
                                                 </div>
                                                 <div class="step-actions">
                                                     <div class="row">

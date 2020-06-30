@@ -35,6 +35,7 @@ const LoadDataTable = () => {
         let vMembers = [];// arreglo para tomar la lista
     
         setTimeout(() => {
+            let sAuxData = "";
             /* llenado del vector */
             for(let i = 0; i < vList.length; i++){
                 vMembers.push({
@@ -44,7 +45,8 @@ const LoadDataTable = () => {
                     "last_name": vList[i].last_name,
                     "genre": vList[i].genre,
                     "phone": vList[i].phone,
-                    "member_type_id": vList[i].member_type_id,
+                    "member_type_id": vList[i].member_type_id,                    
+                    "member_type_id_hide": GetTypeNameString(vList[i].member_type_id),
                     "view": "Ver",
                     "edit": "Editar"
                 });            
@@ -57,8 +59,8 @@ const LoadDataTable = () => {
                     { width: "20%", targets: [5 ,6] },
                     { width: "30%", targets: [2, 3] },
                     { width: '2%', targets: [4] },
-                    { width: '1%', targets: [7, 8]},
-                    { visible: false, targets: [0, 1]}
+                    { width: '1%', targets: [8, 9]},
+                    { visible: false, targets: [0, 1, 7]}
                 ],
                 columns: [
                     { 
@@ -99,7 +101,7 @@ const LoadDataTable = () => {
                                 for(let i = 0; i < vData.length; i++){
                                     sSeparator = ((i + 1)%2 == 0)? '<br>': ''; 
                                     if(!isNaN(vData[i])){ 
-                                        data += '<span style="font-size:10px; height: 26px; margin-bottom:0;" class="chip '+ vMemberType[vData[i]].color_template2 +' lighten-4"><span style="" class="'+ vMemberType[vData[i]].color_template +'-text">'+ vMemberType[vData[i]].name +'</span></span>'+sSeparator;
+                                        data += '<span style="font-size:10px; height: 26px; margin-bottom:0;" class="chip '+ vMemberType[vData[i] - 1].color_template2 +' lighten-4"><span style="" class="'+ vMemberType[vData[i] - 1].color_template +'-text">'+ vMemberType[vData[i] - 1].name +'</span></span>'+sSeparator;
                                     } 
                                     
                                 }                         
@@ -108,10 +110,14 @@ const LoadDataTable = () => {
                         }
                     },
                     { 
+                        data: "member_type_id_hide", 
+                        title: "TipoHide"                       
+                    }, 
+                    { 
                         data: "view", 
                         title: "Ver", 
                         render: function(data, type, row, meta){
-                            if(type === 'display'){
+                            if(type === 'display'){                                
                                 data = '<a href="' + urlBase + 'member/view/' + row.Id + '"><i class="material-icons">remove_red_eye</i></a>';
                             }                        
                             return data;
@@ -126,7 +132,7 @@ const LoadDataTable = () => {
                             }                        
                             return data;
                         }
-                    }              
+                    }             
                 ],
                 scrollY: '50%',
                 scrollCollapse: true            
@@ -138,4 +144,23 @@ const LoadDataTable = () => {
         }, 1500);
          
    });  
+}
+
+/* 
+Descripción:    Obtener una cadena con los nombres de los tipos de área/membresía
+Autor:          J. Prasca
+Fecha:          2020-05-03
+*/
+const GetTypeNameString = (sTypeString) => {
+        let vData = sTypeString.split('|');
+        vData.splice(vData.length - 1, 1);
+        let sSeparator = ' ';
+        let sData = '';
+        for(let i = 0; i < vData.length; i++){                                   
+            if(!isNaN(vData[i])){ 
+                sData += vMemberType[vData[i] - 1].name + sSeparator;
+            }                                    
+        }                         
+                              
+        return sData;  
 }

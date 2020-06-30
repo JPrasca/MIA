@@ -13,13 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::get('member', 'MemberController@index');
 Route::post('member/insertMember', 'MemberController@store');
 Route::put('member/updateMember', 'MemberController@update');
+
+Route::post('userapp/insertUser', 'UserController@store');
+Route::get('userapp/logIn', 'UserController@login');
+Route::get('userapp/check', 'UserController@check');
 
 Route::get('memberType', 'MemberTypeController@index');
 

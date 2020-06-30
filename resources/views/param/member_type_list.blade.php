@@ -15,7 +15,13 @@
     document.getElementById('members-li').classList.add('open');
     document.getElementById('members-div').style.display = 'block';
     document.getElementById('members-list-li1').classList.add('active');
-    document.getElementById('members-list-a1').classList.add('active');    
+    document.getElementById('members-list-a1').classList.add('active');
+    
+    
+    document.querySelector('#configuration-div').style.display = 'block';
+    document.querySelector('#configuration-li').classList.add('active');
+    document.querySelector('#configuration-a1')
+
  
 </script>
 

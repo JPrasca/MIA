@@ -2,10 +2,12 @@
 Descripción:    Carga de los elementos restantes de la vista para registro de nuevos miembros
 Autor:          J. Prasca
 Fecha:          2020-03-16
+Modificaciónes: 2020-05-01: J. Prasca añade medida vertical a la tabla de tipos/áreas
 */
 $(document).ready(function(){
 
     try{
+
         /** componente para escoger fechas */
         $('.datepicker').datepicker({
             firstDay: true, 
@@ -28,7 +30,7 @@ $(document).ready(function(){
 
             /** se remueve el cero de la lista (no sirve en este caso el 'ninguno') */
             for(let i = 0; i < vMemberType.length; i++){
-                if(vMemberType[i].Id == 0){
+                if(vMemberType[i].Id == 1){
                     vMemberType.splice(i, 1);
                     break;
                 }
@@ -38,7 +40,7 @@ $(document).ready(function(){
             $('#page-length-option').DataTable({
                 data: vMemberType,
                 searching: false,
-                scrollY: "200px",
+                scrollY: "180px",
                 scrollCollapse: true,
                 paging: false,
                 columnDefs: [
@@ -76,7 +78,8 @@ $(document).ready(function(){
                     }
                 ]
             });
-
+            /** 2020-05-01 Se añade medida vertical a la tabla*/
+            document.querySelector('#page-length-option').style.height = "120px";
         }, 2000);
     }catch(e){
         M.toast({html: "Ha ocurrido un error al iniciar" + e.message });
@@ -92,7 +95,7 @@ const GetSelectedMemberType = () => {
 
     try{
         //si no tiene ninguno acaba en cero
-        let sList = "0|";
+        let sList = "1|";
 
         /** se toman todos los checkbox seleccionados */
         let vSelection = document.querySelectorAll("input[name='selectType']:checked");
@@ -101,7 +104,7 @@ const GetSelectedMemberType = () => {
         for(let i = 0; i < vSelection.length; i++){          
                 
                 /** si es cero y hay escogidos, entonces se reinicia la cadena para empezar a llenar */
-                if(sList.includes("0")){
+                if(sList.includes("1")){
                     sList = "";
                 }
                 sList += (vSelection[i].value) + "|";
@@ -146,8 +149,6 @@ const SaveMemberConfirm = () => {
     }catch(e){
         M.toast({html: "Ha ocurrido un error en el método SaveMemberConfirm(): \n" + e.message});
     }
-    let objMemberInfo = new Object();
-    //objMemberInfo.Identification = document.querySelector("#idNumber").g
 }
 
 

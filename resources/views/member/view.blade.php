@@ -1,4 +1,4 @@
-@extends('layouts.master_sub_id')
+@extends('layouts.master')
 @section('content')
 <script type="text/javascript">
         document.getElementById('home-a').classList.remove('active');
@@ -15,7 +15,7 @@
         window.location = "mailto:" + sEmail;
     }
 </script>
-<link rel="stylesheet" type="text/css" href="../../app-assets/css/pages/page-users.css">
+{{-- <link rel="stylesheet" type="text/css" href="../../app-assets/css/pages/page-users.css"> --}}
     <div id="main">
         
         <div class="row">
@@ -44,32 +44,32 @@
             <div class="col s12">
                 <div class="container">
                     <!-- users view start -->
-                    <div class="section users-view">
+                    <div class="section">
                         <!-- users view media object start -->
-                        <div class="card-panel animate fadeUp">
+                        <div class="card-panel animate fadeRight">
                             <div class="row">
                                 <div class="col s12 m7">
                                     <div class="display-flex media">
                                         <div class="media-body">
                                             <h6 class="media-heading">
-                                                <span class="users-view-name">{{ strtoupper($objMember->first_name) }} {{ strtoupper($objMember->last_name) }}</span>
+                                                <span>{{ mb_strtoupper($objMember->first_name, 'utf-8') }} {{ mb_strtoupper($objMember->last_name, 'utf-8') }}</span>
                                                 {{-- <span class="grey-text">@</span>
                                                 <span class="users-view-username grey-text">candy007</span> --}}
                                             </h6>
                                             <span>ID:</span>
-                                            <span class="users-view-id">{{ $objMember->identification }}</span>
+                                            <span>{{ $objMember->identification }}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s12 m5 quick-action-btns display-flex justify-content-end align-items-center pt-2">
-                                    <a href="#" onclick="SendMail('{{ $objMember->email }}')" class="btn-small btn-light-blue waves-effect waves-dark"><i class="material-icons">mail_outline</i></a>
-                                    {{-- <a href="user-profile-page.html" class="btn-small btn-light-indigo">Profile</a> --}}
+                                    <a href="#" onclick="SendMail('{{ $objMember->email }}')" class="btn-small btn-light-blue waves-effect waves-dark" style="margin-right: 10pt;"><i class="material-icons">mail_outline</i></a>
+                                    
                                     <a href="{{ config('constants.url_base')}}member/edit/{{ $objMember->Id }}" class="btn-small primary waves-effect waves-light">Editar</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- users view media object ends -->
-                        <!-- users view card data start -->
+                        <!-- member view media object ends -->
+                        <!-- member view card data start -->
                         <div class="card animate fadeLeft">
                             <div class="card-content">
                                 <div class="row">
@@ -96,15 +96,15 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Email:</td>
-                                                    <td class="users-view-role"><a href="#" onclick="SendMail('{{ $objMember->email }}')">{{ $objMember->email }}</a></td>
+                                                    <td><a href="#" onclick="SendMail('{{ $objMember->email }}')">{{ $objMember->email }}</a></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Teléfono:</td>
-                                                    <td class="users-view-role">{{ $objMember->phone }}</td>
+                                                    <td>{{ $objMember->phone }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Dirección:</td>
-                                                    <td class="users-view-role">{{ $objMember->adress }}</td>
+                                                    <td>{{ $objMember->adress }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -120,14 +120,14 @@
                                                 <tr>
                                                     <td>Ocupación:</td>
                                                     {{-- occupation_type.name --}}
-                                                    <td class="users-view-role">{{ $objMember->occupation_type }}</td>
+                                                    <td>{{ $objMember->occupation_type }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Área:</td>
                                                     <td>
                                                         {{-- members.member_type_id --}}
                                                         @foreach ($vMemberTypeSelect as $item)                                                        
-                                                            <span class=" users-view-status chip {{$item->color_template2}} lighten-4 ">
+                                                            <span class="chip {{$item->color_template2}} lighten-4 ">
                                                                 <span class="{{$item->color_template}}-text" >
                                                                     {{ $item->name}}
                                                                 </span>
@@ -141,9 +141,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- users view card data ends -->
+                        <!-- member view card data ends -->
                     </div>
-                    <!-- users view ends -->                    
+                    <!-- member view ends -->                    
                 </div>
                 <div class="content-overlay"></div>
             </div>                  
